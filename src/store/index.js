@@ -27,6 +27,11 @@ export default new Vuex.Store({
     UPDATE_PLAYER_SCORE(state, payload) {
       state.players[payload].score++
     },
+    SET_NEW_ROUND(state) {
+      state.players.forEach(el => {
+        el.score = 0
+      })
+    },
   },
   actions: {
     toggleSettingsModal({ commit, state }) {
@@ -38,12 +43,17 @@ export default new Vuex.Store({
     increaseScore({ commit, state }, payload) {
       let getScoreForPlayer = state.players[payload].score
 
-      console.log(getScoreForPlayer)
-
       if (getScoreForPlayer <= 20) {
         commit('UPDATE_PLAYER_SCORE', payload)
       } else {
         console.log('Player has won!')
+      }
+    },
+    newRound({ commit }) {
+      let newRoundConfirm = confirm('Are you sure?')
+
+      if (newRoundConfirm) {
+        commit('SET_NEW_ROUND')
       }
     },
   },

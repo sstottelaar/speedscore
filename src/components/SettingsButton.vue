@@ -16,7 +16,6 @@ export default {
   name: 'SettingsButton',
   methods: {
     toggleSettings() {
-      console.log('test')
       this.$store.dispatch('toggleSettingsModal')
     },
   },
