@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     showSettings: false,
+    round: 0,
     players: [
       {
         name: 'Player 1',
